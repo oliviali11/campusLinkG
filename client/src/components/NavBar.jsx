@@ -28,6 +28,9 @@ const NavBar = () => {
       <li>
         <a href="/login" className="btn navlink font-gaegu">Login</a>
       </li>
+      <li>
+        <a href="/register" className="btn navlink font-gaegu">Register</a>
+      </li>
     </ul>
   </div>
 </nav>

@@ -12,8 +12,9 @@ const HomePage = () => {
     All in one platform leveraging efficient communication and powerful AI trip assistant
   </h2>
 </div>
-<div className="flex justify-center pt-10 font-gaegu text-2xl">
-  <a href="/login" className="btn navlink">Login Here</a>
+<div className="flex justify-center pt-10 font-gaegu text-2xl space-x-2">
+  <a href="/login" className="btn navlink">Login</a>
+  <a href="/register" className="btn navlink">Register</a>
 </div>
 
     <ScrollablePhoto/>
