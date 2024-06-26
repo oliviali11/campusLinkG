@@ -1,25 +1,23 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import axios from 'axios'
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+import React from 'react'
+import MainLayout from './layouts/MainLayout';
+import HomePage from './pages/HomePage';
+import AssistantPage from './pages/AssistantPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  const fetchAPI = async () => {
-    const response = await axios.get("http://localhost:8000/api/users")
-    console.log(response.data.users)
-  }
 
-  useEffect(() => {
-    fetchAPI()
-  }, [])
+  const router = createBrowserRouter(createRoutesFromElements(
+    <Route path='/' element={<MainLayout/>}>
+      <Route index element={<HomePage/>}/>
+      <Route path='/ai-assistant' element={<AssistantPage/>}/>
+      <Route path='/login' element={<LoginPage/>}/>
+    </Route>
+    
+  ))
 
-  return (
-    <>
-      
-    </>
-  )
+  return <RouterProvider router={router}/>
 }
 
 export default App
