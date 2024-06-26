@@ -43,10 +43,10 @@ const Chatbot = () => {
         className='border border-gray-300'
       />
       <div>
-      <button onClick={handleSendMessage} className='btn navlink'>Send</button>
+      <button onClick={handleSendMessage} className='btn navlink font-gaegu text-xl'>Send</button>
       </div>
       <div className="mt-4">
-        <h2 className="text-lg font-bold mb-2">Response:</h2>
+        <h2 className="text-2xl font-bold mb-2 font-gaegu">Response:</h2>
         {response ? (
           <div>
             {response.hits.map((hit, index) => (

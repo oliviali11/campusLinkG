@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'eagle-lake': ['Eagle Lake', 'cursive'],
+        'archivo-black': ['Archivo Black'],
+        'gaegu': ['Gaegu', 'cursive']
+      }
+    },
   },
   plugins: [],
 }
