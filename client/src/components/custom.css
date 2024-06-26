@@ -1,0 +1,17 @@
+
+  .btn {
+    padding: 8px 20px; /* Adjust padding as needed */
+    background-color: white;
+    color: #2ecc71; /* Light green text color */
+    border: 1px solid #2ecc71; /* Light green border */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    border-radius: 8px;
+  }
+  .btn:hover, .btn:focus {
+    background-color: #2ecc71; /* Light green background on hover */
+    color: white; /* White text color on hover */
+    border-color: #2ecc71; /* Light green border color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+  }
+
