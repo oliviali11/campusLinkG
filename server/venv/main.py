@@ -7,6 +7,7 @@ import bcrypt
 import requests
 import certifi
 import os
+import json
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24).hex()
@@ -17,6 +18,49 @@ cors = CORS(app, origins='*')
 client = MongoClient('mongodb+srv://artsyoli11:Uh28xxh8yP6O4H6l@rideclaremontcluster.mwq7krb.mongodb.net/?retryWrites=true&w=majority&appName=rideClaremontCluster&ssl=true&tlsAllowInvalidCertificates=true')
 db = client['rideclaremont']  # Replace 'mydatabase' with your database name
 users_collection = db['users']
+entries_collection = db['entries']
+
+# Routes
+@app.route('/getRequests', methods=['GET'])
+def get_requests():
+    try:
+        # Query MongoDB for all entries (example)
+        cursor = entries_collection.find({})
+        entries_list = list(cursor)
+        
+        # Serialize MongoDB documents to JSON
+        entries_json = json.dumps(entries_list, default=str)
+        
+        return entries_json, 200  # Return JSON response with status code 200 (OK)
+    
+    except Exception as e:
+        print(f"Error retrieving requests: {str(e)}")
+        return jsonify({'error': 'Internal Server Error'}), 500  # Return error response with status code 500
+
+@app.route('/saveRequest', methods=['POST'])
+def save_request():
+    try:
+        data = request.json
+        name = data.get('name')
+        email = data.get('email')
+        phone = data.get('phone')
+        departure_date = data.get('departureDate')
+        transportation = data.get('transportation')
+
+        # Save request to MongoDB
+        entry = {
+            'name': name,
+            'email': email,
+            'phone': phone,
+            'departureDate': departure_date,
+            'transportation': transportation,
+            # 'timestamp': datetime.datetime.utcnow()
+        }
+        result = entries_collection.insert_one(entry)
+        
+        return jsonify({'message': 'Request saved successfully!', 'entry_id': str(result.inserted_id)})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 # Routes
 @app.route('/')
