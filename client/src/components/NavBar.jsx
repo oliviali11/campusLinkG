@@ -12,7 +12,7 @@ const NavBar = () => {
     <nav className="bg-emerald-500 p-4 flex justify-between items-center">
   <div className="text-white">
   <h1 className="text-3xl font-bold font-archivo-black">
-        Ride Claremont{' '}
+        (5)Campus Link{' '}
         <FontAwesomeIcon icon={faCar} className="text-white text-3xl ml-2" />
         <FontAwesomeIcon icon={faUser} className="text-white text-3xl ml-2" />
       </h1>
